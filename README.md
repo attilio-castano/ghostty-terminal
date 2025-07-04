@@ -1,6 +1,10 @@
 # Ghostty-Optimised Dot-files
 
-This repository provides a **minimal, fast and Ghostty-friendly development environment**:
+This repository provides a **minimal, fast and *Ghostty*-friendly development environment**:
+
+> 🪄  **Ghostty** is a modern, GPU-accelerated terminal emulator focused on
+> performance, correctness and elegant visuals.  You can grab pre-built
+> binaries and learn more at <https://ghostty.org/>.
 
 * **Neovim** 0.11+ configuration written in Lua (`nvim/`)
 * Opinionated **tmux** defaults (`.tmux.conf`)
@@ -18,6 +22,9 @@ Install the base tools first (via your package manager):
 * tmux
 * [Starship](https://starship.rs/)
 * git
+* *Optional but recommended:* [Ghostty](https://ghostty.org/) itself to enjoy
+  transparency, fine-grained palette control, font shaping and other goodies
+  that this configuration auto-detects.
 
 Recommended helpers for the Neovim setup:
 
