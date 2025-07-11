@@ -49,11 +49,19 @@ Clone the repo **anywhere** (it does not have to live under `~/.config`):
 git clone https://github.com/your-user/ghostty-terminal.git
 cd ghostty-terminal
 
-# one-liner – copies the files into place (with backups)
+# Install with backups (default - recommended)
 ./install.sh
+
+# Install without backups (overwrites existing files)
+./install.sh --no-backup
+# or
+./install.sh -n
+
+# Show help
+./install.sh --help
 ```
 
-The script is idempotent and will **back-up existing files/directories** by appending a time-stamp suffix before overwriting them.
+The script is idempotent and by default will **back-up existing files/directories** by appending a time-stamp suffix before overwriting them. Use `--no-backup` to skip creating backups and directly overwrite existing configurations.
 
 Verify everything works:
 

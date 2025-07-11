@@ -33,7 +33,7 @@ end
 -- 2. Editor behaviour tweaks (feel free to extend)
 -----------------------------------------------------------------------
 vim.opt.number         = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.signcolumn     = "yes:1"
 vim.opt.clipboard      = "unnamedplus"
 vim.opt.updatetime     = 250
