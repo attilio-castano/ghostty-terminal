@@ -1,5 +1,5 @@
 -- lua/plugins/lspconfig.lua
--- Plugin configuration for Neovim LSP (Pyright & Ruff)
+-- Plugin configuration for Neovim LSP (Pyright only)
 return {
   {
     "neovim/nvim-lspconfig",
@@ -11,7 +11,7 @@ return {
 
       local mason_lspconfig = require("mason-lspconfig")
       mason_lspconfig.setup({
-        ensure_installed = { "pyright", "ruff" },
+        ensure_installed = { "pyright" },
         automatic_enable = false, -- we'll configure manually to avoid duplicates
       })
 
@@ -57,19 +57,19 @@ return {
       --    each client and keeps full control over individual settings.
 
       local servers = {
-        -- Pyright with mostly-disabled type-checking (Ruff covers lint).
+        -- Pyright with type-checking enabled (no Ruff for linting)
         pyright = {
           settings = {
             python = {
               analysis = {
-                typeCheckingMode = "off",
+                typeCheckingMode = "basic",
               },
             },
           },
         },
 
-        -- Ruff – default configuration is fine.
-        ruff = {},
+        -- Ruff disabled - too opinionated for this setup
+        -- ruff = {},
       }
 
       for name, opts in pairs(servers) do

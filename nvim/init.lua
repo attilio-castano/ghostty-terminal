@@ -33,7 +33,7 @@ end
 -- 2. Editor behaviour tweaks (feel free to extend)
 -----------------------------------------------------------------------
 vim.opt.number         = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.signcolumn     = "yes:1"
 vim.opt.clipboard      = "unnamedplus"
 vim.opt.updatetime     = 250
@@ -66,6 +66,7 @@ require("lazy").setup({
   require("plugins.treesitter"),
   require("plugins.nvimtree"),
   require("plugins.gitsigns"),    -- git diff signs & hunk actions
+  require("plugins.diffview"),    -- Git diff viewer (VS Code-like)
   require("plugins.lspconfig"),   -- Language Server Protocol (LSP) config for Python (Pyright & Ruff)
 
   -- UI enhancements
