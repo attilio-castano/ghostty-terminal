@@ -41,9 +41,10 @@ No additional steps are required because the config bootstraps
   through **mason.nvim**
 * **nvim-tree** file explorer that replaces netrw and smart-opens on
   `nvim .`
+* **diffview.nvim** for VS Code-like git diff viewing and file history
 * **bufferline** / **lualine** UI polish with transparent background
   when inside Ghostty
-* Sensible defaults: relative numbers, clipboard=unnamedplus,
+* Sensible defaults: absolute line numbers, clipboard=unnamedplus,
   `updatetime=250`, etc.
 
 ---
@@ -58,6 +59,7 @@ No additional steps are required because the config bootstraps
 | nvim-lualine/lualine.nvim      | Statusline |
 | akinsho/bufferline.nvim        | Buffer / tab line |
 | lewis6991/gitsigns.nvim        | Git hunk decorations & actions |
+| sindrets/diffview.nvim         | Git diff viewer (VS Code-like) |
 | lukas-reineke/indent-blankline.nvim | Indent guides |
 | folke/which-key.nvim           | Popup which-key hints |
 | catppuccin/nvim               | Rich, semantic-aware colour scheme |
@@ -94,6 +96,13 @@ GitSigns
 
 * `[c` / `]c` – prev / next hunk
 * `<leader>gs` / `<leader>gr` – stage / reset hunk
+
+Diffview
+
+* `<leader>gd` – open diff view (VS Code-like source control)
+* `<leader>gh` – file history (current file)
+* `<leader>gH` – file history (entire repository)
+* `<leader>gc` – close diff view
 
 Telescope
 

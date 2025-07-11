@@ -25,6 +25,10 @@ defined by the configuration (plugins included).  The leader key is
 | Normal | `<leader>gR` | Reset buffer | gitsigns |
 | Normal | `<leader>gp` | Preview hunk | gitsigns |
 | Normal | `<leader>gb` | Blame line | gitsigns |
+| Normal | `<leader>gd` | Open diff view | diffview |
+| Normal | `<leader>gh` | File history (current file) | diffview |
+| Normal | `<leader>gH` | File history (repository) | diffview |
+| Normal | `<leader>gc` | Close diff view | diffview |
 | Normal | `<leader>ff` | Find files | telescope |
 | Normal | `<leader>fg` | Live grep | telescope |
 | Normal | `<leader>fb` | List buffers | telescope |
