@@ -4,6 +4,9 @@ This file is a condensed cheat-sheet of every non-trivial key-mapping
 defined by the configuration (plugins included).  The leader key is
 `<Space>`.
 
+> **Note**: For detailed plugin-specific keybindings (like diffview's file panel),
+> see the [keybindings directory](./keybindings/README.md).
+
 ---
 
 ## Core Neovim
