@@ -1,6 +1,6 @@
 # LSP (Language Server Protocol) Keybindings
 
-These keybindings are available when a language server is attached to a buffer. In this configuration, Pyright and Ruff are configured for Python files.
+These keybindings are available when a language server is attached to a buffer. In this configuration, Pyright is configured for Python files.
 
 ## LSP Keybindings
 
@@ -42,20 +42,15 @@ These Vim commands are available when LSP is active:
 
 ## Python-Specific Features
 
-With Pyright and Ruff configured:
+With Pyright configured:
 
-### Pyright (Type Checking)
+### Type Checking & Navigation
 - Real-time type checking
 - Import resolution
 - Go to definition across modules
 - Find references
 - Hover for type information
-
-### Ruff (Linting & Formatting)
-- Fast Python linting
-- Auto-fix available through code actions (`<leader>a`)
-- Import sorting
-- Code formatting
+- Basic diagnostics without opinionated style rules
 
 ## Common Workflows
 

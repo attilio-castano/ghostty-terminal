@@ -37,8 +37,7 @@ No additional steps are required because the config bootstraps
 ## Highlights
 
 * **Treesitter** for modern, incremental syntax highlighting & indenting
-* **Pyright** (type-checking) + **Ruff (native)** (linting) pre-configured
-  through **mason.nvim**
+* **Pyright** (type-checking) pre-configured through **mason.nvim**
 * **nvim-tree** file explorer that replaces netrw and smart-opens on
   `nvim .`
 * **diffview.nvim** for VS Code-like git diff viewing and file history
