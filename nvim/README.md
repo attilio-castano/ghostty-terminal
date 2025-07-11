@@ -73,42 +73,13 @@ it back on.)
 
 ---
 
-## Key maps (leader = `<Space>`)
+## Keybindings
 
-Global
+Leader key: `<Space>`
 
-* `<leader>w` – save
-* `<A-h/j/k/l>` – jump across splits
-
-Buffers
-
-* `<A-,>` / `<A-.>` – previous / next buffer
-* `<A-1>`…`<A-9>` – jump to buffer 1-9
-
-Nvim-tree (`<leader>e` to toggle)
-
-* `l` – smart open (`o`)
-* `h` – smart close / go-up
-* `v` / `s` / `t` – open in vertical / horizontal split / tab
-
-GitSigns
-
-* `[c` / `]c` – prev / next hunk
-* `<leader>gs` / `<leader>gr` – stage / reset hunk
-
-Diffview
-
-* `<leader>gd` – open diff view (VS Code-like source control)
-* `<leader>gh` – file history (current file)
-* `<leader>gH` – file history (entire repository)
-* `<leader>gc` – close diff view
-
-Telescope
-
-* `<leader>ff` – find files
-* `<leader>fg` – live grep
-* `<leader>fb` – open buffers
-* `<leader>fh` – help tags
+For a complete reference, see:
+- [KEYBINDINGS.md](./KEYBINDINGS.md) - Quick reference for global mappings
+- [keybindings/](./keybindings/) - Detailed plugin-specific documentation
 
 ---
 
@@ -118,23 +89,10 @@ Telescope
 init.lua                entry-point – sets options, bootstraps lazy.nvim
 lua/plugins/*.lua       one file per plugin (lazy.nvim specs)
 lua/util/ghostty.lua    helper that detects Ghostty – used everywhere
+keybindings/            detailed keybinding documentation
+KEYBINDINGS.md          quick reference for all mappings
 lazy-lock.json          plugin lock-file (generated)
 ```
-
----
-
-## Upgrading / known issues
-
-* Sign-column width `yes:1` requires Neovim ≥ 0.9 (you are on 0.11 so
-  everything is fine).
-* **ruff-lsp deprecated** – use the new server built into the Ruff CLI.
-  In lspconfig and Mason it is simply named `ruff`.
-
----
-
-### Changelog
-
-See `CHANGELOG.md` for a list of user-visible changes.
 
 ---
 
