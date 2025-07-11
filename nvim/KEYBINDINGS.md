@@ -34,6 +34,11 @@ Buffer (tab) navigation and management.
 | Normal | `<A-1>`…`<A-9>` | Jump to buffer *n* |
 | Normal | `<leader>bp` | Previous buffer |
 | Normal | `<leader>bn` | Next buffer |
+| Normal | `<leader>bd` | Delete buffer (safe) |
+| Normal | `<leader>bD` | Delete buffer (force) |
+| Normal | `<leader>bo` | Close other buffers |
+| Normal | `<leader>ba` | Close all buffers (return to tree) |
+| Normal | `<leader>bA` | Force close all (return to tree) |
 
 ---
 

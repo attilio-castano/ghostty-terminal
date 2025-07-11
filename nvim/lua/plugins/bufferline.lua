@@ -33,6 +33,36 @@ return {
       end
       map('n', '<leader>bp', '<Cmd>BufferLineCyclePrev<CR>', opts)
       map('n', '<leader>bn', '<Cmd>BufferLineCycleNext<CR>', opts)
+      -- Buffer closing
+      map('n', '<leader>bd', '<Cmd>bdelete<CR>', opts)
+      map('n', '<leader>bD', '<Cmd>bdelete!<CR>', opts)
+      map('n', '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', opts)
+      -- Close all buffers and return to clean state (like nvim .)
+      map('n', '<leader>ba', function()
+        -- First ensure nvim-tree is open
+        require('nvim-tree.api').tree.open()
+        -- Then close all buffers (including any [No Name] buffers)
+        vim.schedule(function()
+          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buflisted then
+              pcall(vim.cmd, 'bdelete ' .. buf)
+            end
+          end
+        end)
+      end, { silent = true, noremap = true, desc = "Close all buffers and show tree" })
+      -- Force close all buffers and return to clean state
+      map('n', '<leader>bA', function()
+        -- First ensure nvim-tree is open
+        require('nvim-tree.api').tree.open()
+        -- Then force close all buffers
+        vim.schedule(function()
+          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buflisted then
+              pcall(vim.cmd, 'bdelete! ' .. buf)
+            end
+          end
+        end)
+      end, { silent = true, noremap = true, desc = "Force close all buffers and show tree" })
     end,
   },
 }
