@@ -4,41 +4,45 @@ This file is a condensed cheat-sheet of every non-trivial key-mapping
 defined by the configuration (plugins included).  The leader key is
 `<Space>`.
 
-| Mode | Keys | Action | Where / Plugin |
-|------|------|--------|----------------|
-| **Normal** | `<leader>w` | Save current buffer | core |
-| Normal | `<A-h>` | Focus split **left** | core |
-| Normal | `<A-j>` | Focus split **below** | core |
-| Normal | `<A-k>` | Focus split **above** | core |
-| Normal | `<A-l>` | Focus split **right** | core |
-| Normal | `<A-,>` | Previous buffer | bufferline |
-| Normal | `<A-.>` | Next buffer | bufferline |
-| Normal | `<A-1>`…`<A-9>` | Jump to buffer *n* | bufferline |
-| Normal | `<leader>bp` | Previous buffer | bufferline |
-| Normal | `<leader>bn` | Next buffer | bufferline |
-| Normal | `<leader>e` | Toggle file tree | nvim-tree |
-| Normal | `]c` | Next Git hunk | gitsigns |
-| Normal | `[c` | Previous Git hunk | gitsigns |
-| Normal | `<leader>gs` | Stage hunk | gitsigns |
-| Normal | `<leader>gr` | Reset hunk | gitsigns |
-| Normal | `<leader>gS` | Stage buffer | gitsigns |
-| Normal | `<leader>gR` | Reset buffer | gitsigns |
-| Normal | `<leader>gp` | Preview hunk | gitsigns |
-| Normal | `<leader>gb` | Blame line | gitsigns |
-| Normal | `<leader>gd` | Open diff view | diffview |
-| Normal | `<leader>gh` | File history (current file) | diffview |
-| Normal | `<leader>gH` | File history (repository) | diffview |
-| Normal | `<leader>gc` | Close diff view | diffview |
-| Normal | `<leader>ff` | Find files | telescope |
-| Normal | `<leader>fg` | Live grep | telescope |
-| Normal | `<leader>fb` | List buffers | telescope |
-| Normal | `<leader>fh` | Help tags | telescope |
+---
+
+## Core Neovim
+
+Basic editor commands and window navigation.
+
+| Mode | Keys | Action |
+|------|------|--------|
+| **Normal** | `<leader>w` | Save current buffer |
+| Normal | `<A-h>` | Focus split **left** |
+| Normal | `<A-j>` | Focus split **below** |
+| Normal | `<A-k>` | Focus split **above** |
+| Normal | `<A-l>` | Focus split **right** |
 
 ---
 
-## Nvim-Tree buffer specific mappings
+## Bufferline
 
-These are active **inside** the tree window.
+Buffer (tab) navigation and management.
+
+| Mode | Keys | Action |
+|------|------|--------|
+| Normal | `<A-,>` | Previous buffer |
+| Normal | `<A-.>` | Next buffer |
+| Normal | `<A-1>`…`<A-9>` | Jump to buffer *n* |
+| Normal | `<leader>bp` | Previous buffer |
+| Normal | `<leader>bn` | Next buffer |
+
+---
+
+## Nvim-Tree
+
+File explorer toggle and navigation.
+
+| Mode | Keys | Action |
+|------|------|--------|
+| Normal | `<leader>e` | Toggle file tree |
+
+### Inside Nvim-Tree window
 
 | Key | Description |
 |-----|-------------|
@@ -54,14 +58,57 @@ These are active **inside** the tree window.
 
 ---
 
-## Telescope default mappings
+## Git Integration
+
+### Gitsigns
+
+In-editor git hunk navigation and actions.
+
+| Mode | Keys | Action |
+|------|------|--------|
+| Normal | `]c` | Next Git hunk |
+| Normal | `[c` | Previous Git hunk |
+| Normal | `<leader>gs` | Stage hunk |
+| Normal | `<leader>gr` | Reset hunk |
+| Normal | `<leader>gS` | Stage buffer |
+| Normal | `<leader>gR` | Reset buffer |
+| Normal | `<leader>gp` | Preview hunk |
+| Normal | `<leader>gb` | Blame line |
+| Visual | `<leader>gs` | Stage selected lines |
+| Visual | `<leader>gr` | Reset selected lines |
+
+### Diffview
+
+VS Code-like git diff viewing and file history.
+
+| Mode | Keys | Action |
+|------|------|--------|
+| Normal | `<leader>gd` | Open diff view |
+| Normal | `<leader>gh` | File history (current file) |
+| Normal | `<leader>gH` | File history (repository) |
+| Normal | `<leader>gc` | Close diff view |
+
+---
+
+## Telescope
+
+Fuzzy finding for files, text, and more.
+
+| Mode | Keys | Action |
+|------|------|--------|
+| Normal | `<leader>ff` | Find files |
+| Normal | `<leader>fg` | Live grep |
+| Normal | `<leader>fb` | List buffers |
+| Normal | `<leader>fh` | Help tags |
+
+### Inside Telescope picker
 
 | Mode | Key | Action |
 |------|-----|--------|
 | Insert | `<C-j>` / `<C-k>` | Move selection down / up |
 | Insert | `<Esc>` or `<C-c>` | Close picker |
 
-*(These are plugin defaults and can be changed via Telescope’s
+*(These are plugin defaults and can be changed via Telescope's
 `defaults.mappings` table.)*
 
 ---
