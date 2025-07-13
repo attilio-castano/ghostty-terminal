@@ -8,6 +8,7 @@ This directory contains comprehensive keybinding documentation for plugins with 
 - [Nvim-Tree](./nvim-tree.md) - File explorer keybindings and operations
 - [Telescope](./telescope.md) - Fuzzy finder for files, text, and more
 - [LSP](./lsp.md) - Language Server Protocol navigation and actions
+- [Render-Markdown](./render-markdown.md) - Beautiful in-terminal markdown rendering
 
 ## Why Separate Documentation?
 

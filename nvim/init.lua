@@ -75,6 +75,7 @@ require("lazy").setup({
   require("plugins.bufferline"),  -- buffer/tabline
   require("plugins.whichkey"),    -- keybinding hints
   require("plugins.telescope"),   -- fuzzy finder
+  require("plugins.render-markdown"), -- beautiful markdown rendering in terminal
   -- Add more plugins here
 })
 
@@ -88,5 +89,7 @@ map("n", "<A-h>", "<C-w>h", { desc = "Move to window on the left" })
 map("n", "<A-j>", "<C-w>j", { desc = "Move to window below" })
 map("n", "<A-k>", "<C-w>k", { desc = "Move to window above" })
 map("n", "<A-l>", "<C-w>l", { desc = "Move to window on the right" })
+-- Toggle markdown rendering
+map("n", "<leader>m", "<cmd>RenderMarkdown toggle<cr>", { desc = "Toggle markdown rendering" })
 -- (Nvim‑tree mapping declared in its plugin spec above)
 
