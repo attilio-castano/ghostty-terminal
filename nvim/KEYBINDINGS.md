@@ -121,5 +121,17 @@ Fuzzy finding for files, text, and more.
 
 ---
 
+## Render Markdown
+
+Beautiful in-terminal markdown rendering.
+
+| Mode | Keys | Action |
+|------|------|--------|
+| Normal | `<leader>m` | Toggle markdown rendering |
+
+For more render-markdown features, see [render-markdown keybindings](./keybindings/render-markdown.md).
+
+---
+
 Keep this file open in a split (`:vsplit KEYBINDINGS.md`) for quick
 reference while you are getting used to the bindings.

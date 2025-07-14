@@ -12,7 +12,7 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TIMESTAMP="$(date +%Y%m%d-%H%M%S)"
-BACKUP_ENABLED=true
+BACKUP_ENABLED=false
 
 info()  { printf "\033[1;34m[INFO]\033[0m %s\n" "$*"; }
 warn()  { printf "\033[1;33m[WARN]\033[0m %s\n" "$*"; }
@@ -22,17 +22,17 @@ usage() {
     cat <<EOF
 Usage: $0 [OPTIONS]
 
-Install Ghostty-optimized dotfiles with optional backup control.
+Install Ghostty-optimized dotfiles (overwrites by default, use -b for backups).
 
 OPTIONS:
     -h, --help          Show this help message
-    -n, --no-backup     Skip backups (overwrite existing files)
-    -b, --backup        Create backups (default behavior)
+    -n, --no-backup     Skip backups (default behavior)
+    -b, --backup        Create backups of existing files
 
 EXAMPLES:
-    $0                  Install with backups (default)
-    $0 --no-backup      Install without creating backups
-    $0 -n               Short form of --no-backup
+    $0                  Install without backups (default)
+    $0 --backup         Install with backups of existing files
+    $0 -b               Short form of --backup
 
 EOF
 }
@@ -98,4 +98,20 @@ mkdir -p "$HOME/.config"
 backup_if_exists "$HOME/.config/starship.toml"
 cp "$REPO_ROOT/starship.toml" "$HOME/.config/starship.toml"
 
-info "All done!  Launch nvim/tmux/starship to verify everything works."
+# ---------------------------------------------------------------------------
+# Ghostty (XDG_CONFIG_HOME/ghostty/config)
+# ---------------------------------------------------------------------------
+# Note: On macOS, Ghostty uses ~/Library/Application Support by default.
+# To use XDG paths, set: export XDG_CONFIG_HOME="$HOME/.config" in your shell.
+info "Installing Ghostty config…"
+CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+mkdir -p "$CONFIG_HOME/ghostty"
+backup_if_exists "$CONFIG_HOME/ghostty/config"
+cp "$REPO_ROOT/ghostty/config" "$CONFIG_HOME/ghostty/config"
+info "  Installed to: $CONFIG_HOME/ghostty/config"
+if [[ "$OSTYPE" == "darwin"* ]] && [[ -z "$XDG_CONFIG_HOME" ]]; then
+  warn "  On macOS: Set XDG_CONFIG_HOME in your shell for Ghostty to find this config"
+  warn "  Add to ~/.zshrc: export XDG_CONFIG_HOME=\"\$HOME/.config\""
+fi
+
+info "All done!  Launch ghostty/nvim/tmux/starship to verify everything works."
