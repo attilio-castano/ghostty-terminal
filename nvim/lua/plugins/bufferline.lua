@@ -8,9 +8,21 @@ return {
       require("bufferline").setup({
         options = {
           mode = "buffers",
-          numbers = "none",
+          numbers = "ordinal",           -- Show buffer numbers
           diagnostics = "nvim_lsp",
-          separator_style = "thick",
+          separator_style = "thin",
+          always_show_bufferline = true, -- Always show, even with 0-1 buffers
+          show_buffer_close_icons = true, -- Show × on each buffer
+          show_close_icon = false,       -- Hide global close icon
+          modified_icon = "●",           -- Icon for modified buffers
+          offsets = {
+            {
+              filetype = "NvimTree",
+              text = "File Explorer",
+              text_align = "center",
+              separator = true,
+            }
+          },
         },
       })
       -- Transparent background for Ghostty
@@ -19,9 +31,12 @@ return {
         local hl = vim.api.nvim_set_hl
         hl(0, "BufferLineFill",             { bg = "none" })
         hl(0, "BufferLineBackground",       { bg = "none" })
-        hl(0, "BufferLineBufferSelected",   { bg = "none" })
+        hl(0, "BufferLineBufferSelected",   { bg = "none", bold = true, italic = true })
         hl(0, "BufferLineBufferVisible",    { bg = "none" })
         hl(0, "BufferLineIndicatorSelected",{ bg = "none" })
+        -- Additional selected buffer highlighting
+        hl(0, "BufferLineNumbersSelected",   { fg = "#89b4fa", bold = true, bg = "none" })
+        hl(0, "BufferLineModifiedSelected",  { fg = "#f38ba8", bold = true, bg = "none" })
       end
       -- Buffer navigation keymaps
       local map = vim.keymap.set
