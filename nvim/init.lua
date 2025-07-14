@@ -67,6 +67,7 @@ require("lazy").setup({
   require("plugins.nvimtree"),
   require("plugins.gitsigns"),    -- git diff signs & hunk actions
   require("plugins.diffview"),    -- Git diff viewer (VS Code-like)
+  require("plugins.neogit"),      -- Magit-inspired git interface
   require("plugins.lspconfig"),   -- Language Server Protocol (LSP) config for Python (Pyright & Ruff)
 
   -- UI enhancements

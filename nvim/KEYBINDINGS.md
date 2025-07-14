@@ -96,6 +96,32 @@ VS Code-like git diff viewing and file history.
 | Normal | `<leader>gH` | File history (repository) |
 | Normal | `<leader>gc` | Close diff view |
 
+### Neogit
+
+Magit-inspired git interface for comprehensive git workflow management.
+
+| Mode | Keys | Action |
+|------|------|--------|
+| Normal | `<leader>gg` | Open Neogit status |
+| Normal | `<leader>gC` | Commit popup |
+| Normal | `<leader>gP` | Push popup |
+| Normal | `<leader>gl` | Pull popup |
+| Normal | `<leader>gB` | Branch popup |
+
+### Inside Neogit status window
+
+| Key | Description |
+|-----|-------------|
+| `s` | Stage file/hunk |
+| `u` | Unstage file/hunk |
+| `x` | Discard changes |
+| `<tab>` | Toggle section/file |
+| `c` | Commit menu |
+| `p` | Push menu |
+| `P` | Pull menu |
+| `b` | Branch menu |
+| `q` | Close Neogit |
+
 ---
 
 ## Telescope
