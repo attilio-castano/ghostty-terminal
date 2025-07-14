@@ -98,4 +98,20 @@ mkdir -p "$HOME/.config"
 backup_if_exists "$HOME/.config/starship.toml"
 cp "$REPO_ROOT/starship.toml" "$HOME/.config/starship.toml"
 
-info "All done!  Launch nvim/tmux/starship to verify everything works."
+# ---------------------------------------------------------------------------
+# Ghostty (XDG_CONFIG_HOME/ghostty/config)
+# ---------------------------------------------------------------------------
+# Note: On macOS, Ghostty uses ~/Library/Application Support by default.
+# To use XDG paths, set: export XDG_CONFIG_HOME="$HOME/.config" in your shell.
+info "Installing Ghostty config…"
+CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+mkdir -p "$CONFIG_HOME/ghostty"
+backup_if_exists "$CONFIG_HOME/ghostty/config"
+cp "$REPO_ROOT/ghostty/config" "$CONFIG_HOME/ghostty/config"
+info "  Installed to: $CONFIG_HOME/ghostty/config"
+if [[ "$OSTYPE" == "darwin"* ]] && [[ -z "$XDG_CONFIG_HOME" ]]; then
+  warn "  On macOS: Set XDG_CONFIG_HOME in your shell for Ghostty to find this config"
+  warn "  Add to ~/.zshrc: export XDG_CONFIG_HOME=\"\$HOME/.config\""
+fi
+
+info "All done!  Launch ghostty/nvim/tmux/starship to verify everything works."

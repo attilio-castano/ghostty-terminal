@@ -1,0 +1,6 @@
+# Minimal Ghostty Configuration
+# Just enough to use Nerd Fonts for icons in Neovim
+
+font-family = JetBrainsMono NF
+font-size = 13
+keybind = shift+enter=text:\n
