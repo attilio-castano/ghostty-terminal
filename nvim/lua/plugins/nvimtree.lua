@@ -28,6 +28,9 @@ return {
                 vim.keymap.set('n', key, func, opts(desc))
             end
 
+            -- Unmap the default '-' keybinding
+            vim.keymap.del('n', '-', { buffer = bufnr })
+
             -- Smart open: delegate to 'o' mapping (expand or open)
             map('l', function()
                 vim.cmd('normal o')
