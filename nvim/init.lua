@@ -68,6 +68,7 @@ require("lazy").setup({
   require("plugins.gitsigns"),    -- git diff signs & hunk actions
   require("plugins.diffview"),    -- Git diff viewer (VS Code-like)
   require("plugins.neogit"),      -- Magit-inspired git interface
+  require("plugins.octo"),        -- GitHub integration (PRs, issues, reviews)
   require("plugins.lspconfig"),   -- Language Server Protocol (LSP) config for Python (Pyright & Ruff)
 
   -- UI enhancements
@@ -92,5 +93,14 @@ map("n", "<A-k>", "<C-w>k", { desc = "Move to window above" })
 map("n", "<A-l>", "<C-w>l", { desc = "Move to window on the right" })
 -- Toggle markdown rendering
 map("n", "<leader>m", "<cmd>RenderMarkdown toggle<cr>", { desc = "Toggle markdown rendering" })
+-- Clipboard yank keybindings
+map("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
+map("n", "<leader>y", '"+y', { desc = "Yank to clipboard" })
+-- GitHub integration (Octo)
+map("n", "<leader>go", "<cmd>Octo<cr>", { desc = "Open Octo" })
+map("n", "<leader>gpr", "<cmd>Octo pr list<cr>", { desc = "List PRs" })
+map("n", "<leader>gpi", "<cmd>Octo issue list<cr>", { desc = "List issues" })
+map("n", "<leader>gpc", "<cmd>Octo pr create<cr>", { desc = "Create PR" })
+map("n", "<leader>gic", "<cmd>Octo issue create<cr>", { desc = "Create issue" })
 -- (Nvim‑tree mapping declared in its plugin spec above)
 

@@ -16,10 +16,12 @@ Basic editor commands and window navigation.
 | Mode | Keys | Action |
 |------|------|--------|
 | **Normal** | `<leader>w` | Save current buffer |
+| Normal | `<leader>y` | Yank to system clipboard |
 | Normal | `<A-h>` | Focus split **left** |
 | Normal | `<A-j>` | Focus split **below** |
 | Normal | `<A-k>` | Focus split **above** |
 | Normal | `<A-l>` | Focus split **right** |
+| **Visual** | `<leader>y` | Yank selection to system clipboard |
 
 ---
 
@@ -121,6 +123,35 @@ Magit-inspired git interface for comprehensive git workflow management.
 | `P` | Pull menu |
 | `b` | Branch menu |
 | `q` | Close Neogit |
+
+For comprehensive Neogit workflows, branch management, commit viewing, and troubleshooting, see [Neogit keybindings](./keybindings/neogit.md).
+
+### Octo (GitHub Integration)
+
+GitHub pull requests, issues, and code reviews within Neovim.
+
+| Mode | Keys | Action |
+|------|------|--------|
+| Normal | `<leader>go` | Open Octo |
+| Normal | `<leader>gpr` | List PRs |
+| Normal | `<leader>gpi` | List issues |
+| Normal | `<leader>gpc` | Create PR |
+| Normal | `<leader>gic` | Create issue |
+
+### Inside Octo PR/Issue buffers
+
+| Key | Description |
+|-----|-------------|
+| `]c` / `[c` | Next/previous comment |
+| `<space>ca` | Add comment |
+| `<space>cd` | Delete comment |
+| `<space>pd` | Show PR diff |
+| `<space>r+` | 👍 reaction |
+| `<space>po` | Checkout PR |
+| `<space>pm` | Merge PR |
+| `<C-b>` | Open in browser |
+
+For comprehensive GitHub workflows, authentication setup, and code review features, see [Octo keybindings](./keybindings/octo.md).
 
 ---
 

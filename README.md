@@ -7,10 +7,11 @@ This repository provides a **minimal, fast and *Ghostty*-friendly development en
 > binaries and learn more at <https://ghostty.org/>.
 
 * **Neovim** 0.11+ configuration written in Lua (`nvim/`)
+* **Ghostty** terminal configuration with Nerd Font setup (`ghostty/`)
 * Opinionated **tmux** defaults (`.tmux.conf`)
 * A colourful **Starship** prompt (`starship.toml`)
 
-Copy (or symlink) the files into their standard XDG locations and you are ready to hack in seconds.
+Symlink the files into their standard XDG locations and you are ready to hack in seconds.
 
 ---
 
@@ -28,9 +29,9 @@ Install the base tools first (via your package manager):
 
 Recommended helpers for the Neovim setup:
 
-* [ripgrep](https://github.com/BurntSushi/ripgrep) – used by Telescope’s live-grep
+* [ripgrep](https://github.com/BurntSushi/ripgrep) – used by Telescope's live-grep
 * [fd](https://github.com/sharkdp/fd) – fast file-finder
-* A Nerd Font (e.g. *JetBrains Mono NF*) for icons / glyphs
+* A **Nerd Font** (e.g. *JetBrains Mono NF*) for icons in Neovim plugins like nvim-tree, lualine, telescope, and bufferline. Download from [nerdfonts.com](https://www.nerdfonts.com/)
 
 Ghostty enhancements kick-in automatically when **either** of these is true:
 
@@ -49,19 +50,19 @@ Clone the repo **anywhere** (it does not have to live under `~/.config`):
 git clone https://github.com/your-user/ghostty-terminal.git
 cd ghostty-terminal
 
-# Install with backups (default - recommended)
+# Install without backups (default)
 ./install.sh
 
-# Install without backups (overwrites existing files)
-./install.sh --no-backup
+# Install with backups (creates .bak files)
+./install.sh --backup
 # or
-./install.sh -n
+./install.sh -b
 
 # Show help
 ./install.sh --help
 ```
 
-The script is idempotent and by default will **back-up existing files/directories** by appending a time-stamp suffix before overwriting them. Use `--no-backup` to skip creating backups and directly overwrite existing configurations.
+The script is idempotent and by default will **overwrite existing configurations directly**. Use `--backup` to create timestamped backups of existing files/directories before creating symlinks. Once installed, changes to repository files will be immediately reflected in your configs.
 
 Verify everything works:
 
@@ -78,14 +79,18 @@ eval "$(starship init bash)"   # for Bash (see Starship docs for zsh/fish)
 ```bash
 # Neovim
 mkdir -p ~/.config
-cp -r nvim ~/.config/nvim
+ln -sf "$PWD/nvim" ~/.config/nvim
+
+# Ghostty
+mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty"
+ln -sf "$PWD/ghostty/config" "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/config"
 
 # tmux
-cp .tmux.conf ~/.tmux.conf
+ln -sf "$PWD/.tmux.conf" ~/.tmux.conf
 
 # Starship
 mkdir -p ~/.config
-cp starship.toml ~/.config/starship.toml
+ln -sf "$PWD/starship.toml" ~/.config/starship.toml
 ```
 
 Open Neovim – the [lazy.nvim] bootstrapper will fetch and compile all plugins.
@@ -94,7 +99,7 @@ Open Neovim – the [lazy.nvim] bootstrapper will fetch and compile all plugins.
 
 ## 3. Updating
 
-Pull the latest changes and re-run `./install.sh`. Because the files are copied verbatim it is safe to keep personal overrides in separate dot-files (e.g. `~/.tmux.local.conf`) and source them afterwards.
+Pull the latest changes with `git pull`. Because the files are symlinked, your configs will automatically reflect the changes immediately. No need to re-run `./install.sh`! Personal overrides can be kept in separate dot-files (e.g. `~/.tmux.local.conf`) and sourced afterwards.
 
 ---
 
@@ -103,6 +108,7 @@ Pull the latest changes and re-run `./install.sh`. Because the files are copied 
 | Path | Installed to | Purpose |
 |------|--------------|---------|
 | `nvim/`          | `~/.config/nvim/`        | Lua-based Neovim config (plugins, `init.lua`, docs) |
+| `ghostty/`       | `~/.config/ghostty/`     | Minimal Ghostty config with Nerd Font setup |
 | `.tmux.conf`     | `~/.tmux.conf`           | Mouse, Unicode, Alt-arrow pane nav, large scrollback |
 | `starship.toml`  | `~/.config/starship.toml`| Colourful prompt (Git, Python, Node.js, duration…) |
 

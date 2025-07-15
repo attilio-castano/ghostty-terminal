@@ -3,9 +3,9 @@
 # ---------------------------------------------------------------------------
 # Ghostty dot-files installer
 # ---------------------------------------------------------------------------
-# Copies the Neovim, tmux and Starship config of this repository into the
-# correct XDG locations.  Existing files/directories are moved aside with a
-# timestamp suffix so the script is (reasonably) safe to run repeatedly.
+# Creates symlinks from the Neovim, tmux and Starship config of this repository
+# to the correct XDG locations. By default, existing files/directories are
+# OVERWRITTEN without backup. Use --backup to create timestamped backups.
 # ---------------------------------------------------------------------------
 
 set -euo pipefail
@@ -22,7 +22,7 @@ usage() {
     cat <<EOF
 Usage: $0 [OPTIONS]
 
-Install Ghostty-optimized dotfiles (overwrites by default, use -b for backups).
+Install Ghostty-optimized dotfiles by creating symlinks (overwrites by default, use -b for backups).
 
 OPTIONS:
     -h, --help          Show this help message
@@ -30,9 +30,12 @@ OPTIONS:
     -b, --backup        Create backups of existing files
 
 EXAMPLES:
-    $0                  Install without backups (default)
-    $0 --backup         Install with backups of existing files
+    $0                  Create symlinks without backups (default)
+    $0 --backup         Create symlinks with backups of existing files
     $0 -b               Short form of --backup
+
+NOTE: Symlinks keep configs in sync with the repository automatically.
+      Changes to repo files will be immediately reflected in your configs.
 
 EOF
 }
@@ -81,14 +84,14 @@ backup_if_exists() {
 info "Installing Neovim config…"
 mkdir -p "$HOME/.config"
 backup_if_exists "$HOME/.config/nvim"
-cp -R "$REPO_ROOT/nvim" "$HOME/.config/nvim"
+ln -sf "$REPO_ROOT/nvim" "$HOME/.config/nvim"
 
 # ---------------------------------------------------------------------------
 # tmux (~/.tmux.conf)
 # ---------------------------------------------------------------------------
 info "Installing tmux config…"
 backup_if_exists "$HOME/.tmux.conf"
-cp "$REPO_ROOT/.tmux.conf" "$HOME/.tmux.conf"
+ln -sf "$REPO_ROOT/.tmux.conf" "$HOME/.tmux.conf"
 
 # ---------------------------------------------------------------------------
 # Starship (~/.config/starship.toml)
@@ -96,7 +99,7 @@ cp "$REPO_ROOT/.tmux.conf" "$HOME/.tmux.conf"
 info "Installing Starship config…"
 mkdir -p "$HOME/.config"
 backup_if_exists "$HOME/.config/starship.toml"
-cp "$REPO_ROOT/starship.toml" "$HOME/.config/starship.toml"
+ln -sf "$REPO_ROOT/starship.toml" "$HOME/.config/starship.toml"
 
 # ---------------------------------------------------------------------------
 # Ghostty (XDG_CONFIG_HOME/ghostty/config)
@@ -107,11 +110,13 @@ info "Installing Ghostty config…"
 CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 mkdir -p "$CONFIG_HOME/ghostty"
 backup_if_exists "$CONFIG_HOME/ghostty/config"
-cp "$REPO_ROOT/ghostty/config" "$CONFIG_HOME/ghostty/config"
+ln -sf "$REPO_ROOT/ghostty/config" "$CONFIG_HOME/ghostty/config"
 info "  Installed to: $CONFIG_HOME/ghostty/config"
 if [[ "$OSTYPE" == "darwin"* ]] && [[ -z "$XDG_CONFIG_HOME" ]]; then
   warn "  On macOS: Set XDG_CONFIG_HOME in your shell for Ghostty to find this config"
   warn "  Add to ~/.zshrc: export XDG_CONFIG_HOME=\"\$HOME/.config\""
 fi
 
-info "All done!  Launch ghostty/nvim/tmux/starship to verify everything works."
+info "All done! Symlinks created - your configs are now synced with the repository."
+info "Changes to repo files will be immediately reflected in your configs."
+info "Launch ghostty/nvim/tmux/starship to verify everything works."
