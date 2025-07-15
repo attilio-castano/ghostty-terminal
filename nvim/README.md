@@ -40,9 +40,12 @@ No additional steps are required because the config bootstraps
 * **Pyright** (type-checking) pre-configured through **mason.nvim**
 * **nvim-tree** file explorer that replaces netrw and smart-opens on
   `nvim .`
+* **Neogit** for comprehensive, Magit-inspired git workflow management
 * **diffview.nvim** for VS Code-like git diff viewing and file history
+* **render-markdown** for beautiful in-terminal markdown rendering with syntax highlighting
 * **bufferline** / **lualine** UI polish with transparent background
   when inside Ghostty
+* **Enhanced clipboard** with `<leader>y` for explicit system clipboard yanking
 * Sensible defaults: absolute line numbers, clipboard=unnamedplus,
   `updatetime=250`, etc.
 
@@ -59,6 +62,8 @@ No additional steps are required because the config bootstraps
 | akinsho/bufferline.nvim        | Buffer / tab line |
 | lewis6991/gitsigns.nvim        | Git hunk decorations & actions |
 | sindrets/diffview.nvim         | Git diff viewer (VS Code-like) |
+| NeogitOrg/neogit              | Magit-inspired git interface |
+| MeanderingProgrammer/render-markdown.nvim | Beautiful in-terminal markdown rendering |
 | lukas-reineke/indent-blankline.nvim | Indent guides |
 | folke/which-key.nvim           | Popup which-key hints |
 | catppuccin/nvim               | Rich, semantic-aware colour scheme |
@@ -66,6 +71,8 @@ No additional steps are required because the config bootstraps
 | nvim-telescope/telescope-fzf-native.nvim | Fast C-implemented sorter for Telescope |
 | neovim/nvim-lspconfig + mason-org/mason.nvim | LSP servers & installer |
 | mason-org/mason-lspconfig.nvim | mason <-> lspconfig bridge |
+| nvim-lua/plenary.nvim         | Lua utility library (dependency) |
+| nvim-tree/nvim-web-devicons   | File type icons (dependency) |
 
 (_nvim-autopairs_ used to live here; it is **disabled on purpose** – just
 delete `lua/plugins/autopairs.lua` if you are sure you will never turn
@@ -89,7 +96,14 @@ For a complete reference, see:
 init.lua                entry-point – sets options, bootstraps lazy.nvim
 lua/plugins/*.lua       one file per plugin (lazy.nvim specs)
 lua/util/ghostty.lua    helper that detects Ghostty – used everywhere
-keybindings/            detailed keybinding documentation
+keybindings/            detailed plugin-specific keybinding documentation
+├── README.md           index of detailed keybinding docs
+├── diffview.md         diffview.nvim keybindings & workflows
+├── neogit.md           neogit git workflow keybindings
+├── nvim-tree.md        file explorer keybindings
+├── telescope.md        fuzzy finder keybindings
+├── lsp.md              language server keybindings
+└── render-markdown.md  markdown rendering keybindings
 KEYBINDINGS.md          quick reference for all mappings
 lazy-lock.json          plugin lock-file (generated)
 ```

@@ -5,6 +5,7 @@ This directory contains comprehensive keybinding documentation for plugins with 
 ## Quick Links
 
 - [Diffview](./diffview.md) - Git diff viewer with VS Code-like interface
+- [Neogit](./neogit.md) - Magit-inspired git interface for comprehensive git workflow
 - [Nvim-Tree](./nvim-tree.md) - File explorer keybindings and operations
 - [Telescope](./telescope.md) - Fuzzy finder for files, text, and more
 - [LSP](./lsp.md) - Language Server Protocol navigation and actions

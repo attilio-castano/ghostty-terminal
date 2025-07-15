@@ -92,5 +92,8 @@ map("n", "<A-k>", "<C-w>k", { desc = "Move to window above" })
 map("n", "<A-l>", "<C-w>l", { desc = "Move to window on the right" })
 -- Toggle markdown rendering
 map("n", "<leader>m", "<cmd>RenderMarkdown toggle<cr>", { desc = "Toggle markdown rendering" })
+-- Clipboard yank keybindings
+map("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
+map("n", "<leader>y", '"+y', { desc = "Yank to clipboard" })
 -- (Nvim‑tree mapping declared in its plugin spec above)
 

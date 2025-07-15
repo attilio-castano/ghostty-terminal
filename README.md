@@ -7,6 +7,7 @@ This repository provides a **minimal, fast and *Ghostty*-friendly development en
 > binaries and learn more at <https://ghostty.org/>.
 
 * **Neovim** 0.11+ configuration written in Lua (`nvim/`)
+* **Ghostty** terminal configuration with Nerd Font setup (`ghostty/`)
 * Opinionated **tmux** defaults (`.tmux.conf`)
 * A colourful **Starship** prompt (`starship.toml`)
 
@@ -28,9 +29,9 @@ Install the base tools first (via your package manager):
 
 Recommended helpers for the Neovim setup:
 
-* [ripgrep](https://github.com/BurntSushi/ripgrep) – used by Telescope’s live-grep
+* [ripgrep](https://github.com/BurntSushi/ripgrep) – used by Telescope's live-grep
 * [fd](https://github.com/sharkdp/fd) – fast file-finder
-* A Nerd Font (e.g. *JetBrains Mono NF*) for icons / glyphs
+* A **Nerd Font** (e.g. *JetBrains Mono NF*) for icons in Neovim plugins like nvim-tree, lualine, telescope, and bufferline. Download from [nerdfonts.com](https://www.nerdfonts.com/)
 
 Ghostty enhancements kick-in automatically when **either** of these is true:
 
@@ -49,19 +50,19 @@ Clone the repo **anywhere** (it does not have to live under `~/.config`):
 git clone https://github.com/your-user/ghostty-terminal.git
 cd ghostty-terminal
 
-# Install with backups (default - recommended)
+# Install without backups (default)
 ./install.sh
 
-# Install without backups (overwrites existing files)
-./install.sh --no-backup
+# Install with backups (creates .bak files)
+./install.sh --backup
 # or
-./install.sh -n
+./install.sh -b
 
 # Show help
 ./install.sh --help
 ```
 
-The script is idempotent and by default will **back-up existing files/directories** by appending a time-stamp suffix before overwriting them. Use `--no-backup` to skip creating backups and directly overwrite existing configurations.
+The script is idempotent and by default will **overwrite existing configurations directly**. Use `--backup` to create timestamped backups of existing files/directories before overwriting them.
 
 Verify everything works:
 
@@ -79,6 +80,10 @@ eval "$(starship init bash)"   # for Bash (see Starship docs for zsh/fish)
 # Neovim
 mkdir -p ~/.config
 cp -r nvim ~/.config/nvim
+
+# Ghostty
+mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty"
+cp ghostty/config "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/config"
 
 # tmux
 cp .tmux.conf ~/.tmux.conf
@@ -103,6 +108,7 @@ Pull the latest changes and re-run `./install.sh`. Because the files are copied 
 | Path | Installed to | Purpose |
 |------|--------------|---------|
 | `nvim/`          | `~/.config/nvim/`        | Lua-based Neovim config (plugins, `init.lua`, docs) |
+| `ghostty/`       | `~/.config/ghostty/`     | Minimal Ghostty config with Nerd Font setup |
 | `.tmux.conf`     | `~/.tmux.conf`           | Mouse, Unicode, Alt-arrow pane nav, large scrollback |
 | `starship.toml`  | `~/.config/starship.toml`| Colourful prompt (Git, Python, Node.js, duration…) |
 

@@ -16,10 +16,12 @@ Basic editor commands and window navigation.
 | Mode | Keys | Action |
 |------|------|--------|
 | **Normal** | `<leader>w` | Save current buffer |
+| Normal | `<leader>y` | Yank to system clipboard |
 | Normal | `<A-h>` | Focus split **left** |
 | Normal | `<A-j>` | Focus split **below** |
 | Normal | `<A-k>` | Focus split **above** |
 | Normal | `<A-l>` | Focus split **right** |
+| **Visual** | `<leader>y` | Yank selection to system clipboard |
 
 ---
 
@@ -121,6 +123,8 @@ Magit-inspired git interface for comprehensive git workflow management.
 | `P` | Pull menu |
 | `b` | Branch menu |
 | `q` | Close Neogit |
+
+For comprehensive Neogit workflows, branch management, commit viewing, and troubleshooting, see [Neogit keybindings](./keybindings/neogit.md).
 
 ---
 
