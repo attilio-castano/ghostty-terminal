@@ -11,7 +11,7 @@ This repository provides a **minimal, fast and *Ghostty*-friendly development en
 * Opinionated **tmux** defaults (`.tmux.conf`)
 * A colourful **Starship** prompt (`starship.toml`)
 
-Copy (or symlink) the files into their standard XDG locations and you are ready to hack in seconds.
+Symlink the files into their standard XDG locations and you are ready to hack in seconds.
 
 ---
 
@@ -62,7 +62,7 @@ cd ghostty-terminal
 ./install.sh --help
 ```
 
-The script is idempotent and by default will **overwrite existing configurations directly**. Use `--backup` to create timestamped backups of existing files/directories before overwriting them.
+The script is idempotent and by default will **overwrite existing configurations directly**. Use `--backup` to create timestamped backups of existing files/directories before creating symlinks. Once installed, changes to repository files will be immediately reflected in your configs.
 
 Verify everything works:
 
@@ -79,18 +79,18 @@ eval "$(starship init bash)"   # for Bash (see Starship docs for zsh/fish)
 ```bash
 # Neovim
 mkdir -p ~/.config
-cp -r nvim ~/.config/nvim
+ln -sf "$PWD/nvim" ~/.config/nvim
 
 # Ghostty
 mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty"
-cp ghostty/config "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/config"
+ln -sf "$PWD/ghostty/config" "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/config"
 
 # tmux
-cp .tmux.conf ~/.tmux.conf
+ln -sf "$PWD/.tmux.conf" ~/.tmux.conf
 
 # Starship
 mkdir -p ~/.config
-cp starship.toml ~/.config/starship.toml
+ln -sf "$PWD/starship.toml" ~/.config/starship.toml
 ```
 
 Open Neovim – the [lazy.nvim] bootstrapper will fetch and compile all plugins.
@@ -99,7 +99,7 @@ Open Neovim – the [lazy.nvim] bootstrapper will fetch and compile all plugins.
 
 ## 3. Updating
 
-Pull the latest changes and re-run `./install.sh`. Because the files are copied verbatim it is safe to keep personal overrides in separate dot-files (e.g. `~/.tmux.local.conf`) and source them afterwards.
+Pull the latest changes with `git pull`. Because the files are symlinked, your configs will automatically reflect the changes immediately. No need to re-run `./install.sh`! Personal overrides can be kept in separate dot-files (e.g. `~/.tmux.local.conf`) and sourced afterwards.
 
 ---
 
