@@ -41,6 +41,7 @@ No additional steps are required because the config bootstraps
 * **nvim-tree** file explorer that replaces netrw and smart-opens on
   `nvim .`
 * **Neogit** for comprehensive, Magit-inspired git workflow management
+* **Octo** for GitHub integration (PRs, issues, code reviews) directly in Neovim
 * **diffview.nvim** for VS Code-like git diff viewing and file history
 * **render-markdown** for beautiful in-terminal markdown rendering with syntax highlighting
 * **bufferline** / **lualine** UI polish with transparent background
@@ -63,6 +64,7 @@ No additional steps are required because the config bootstraps
 | lewis6991/gitsigns.nvim        | Git hunk decorations & actions |
 | sindrets/diffview.nvim         | Git diff viewer (VS Code-like) |
 | NeogitOrg/neogit              | Magit-inspired git interface |
+| pwntester/octo.nvim           | GitHub integration (PRs, issues, reviews) |
 | MeanderingProgrammer/render-markdown.nvim | Beautiful in-terminal markdown rendering |
 | lukas-reineke/indent-blankline.nvim | Indent guides |
 | folke/which-key.nvim           | Popup which-key hints |
@@ -100,6 +102,7 @@ keybindings/            detailed plugin-specific keybinding documentation
 ├── README.md           index of detailed keybinding docs
 ├── diffview.md         diffview.nvim keybindings & workflows
 ├── neogit.md           neogit git workflow keybindings
+├── octo.md             GitHub integration (PRs, issues, reviews)
 ├── nvim-tree.md        file explorer keybindings
 ├── telescope.md        fuzzy finder keybindings
 ├── lsp.md              language server keybindings
