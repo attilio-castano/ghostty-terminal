@@ -55,8 +55,9 @@ return {
         mappings = {
           open_in_browser = { lhs = "<C-b>", desc = "open issue in browser" },
           copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
+          copy_sha = { lhs = "<C-e>", desc = "copy commit SHA to system clipboard" },
           checkout_pr = { lhs = "<C-o>", desc = "checkout PR" },
-          merge_pr = { lhs = "<C-m>", desc = "merge PR" },
+          merge_pr = { lhs = "<C-r>", desc = "merge PR" },
         },
       },
       comment_icon = "",
