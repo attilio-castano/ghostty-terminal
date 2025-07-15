@@ -41,7 +41,7 @@ return {
             map('t', api.node.open.tab, 'Open: New Tab')
             map('C', api.tree.change_root_to_node, 'Change Root to Node')
             -- Default parent directory
-            map('-', api.tree.change_root_to_parent, 'Up to Parent')
+            map('-C', api.tree.change_root_to_parent, 'Up to Parent')
             -- Toggle hidden/dotfiles
             map('H', api.tree.toggle_hidden_filter,  'Toggle Dotfiles')
             map('z', api.tree.collapse_all, 'Collapse All')
