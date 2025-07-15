@@ -10,6 +10,8 @@ return {
             enabled = true,
             -- Maximum file size to render
             max_file_size = 10.0, -- MB
+            -- File types to render
+            file_types = { "markdown", "octo" },
             -- Render mode
             render_modes = { "n", "c" }, -- Normal and command mode
             -- Anti-conceal feature
