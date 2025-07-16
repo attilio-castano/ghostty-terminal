@@ -30,6 +30,8 @@ return {
 
             -- Unmap the default '-' keybinding
             vim.keymap.del('n', '-', { buffer = bufnr })
+            -- Disable 'q' to prevent accidental closing (use <leader>e instead)
+            vim.keymap.del('n', 'q', { buffer = bufnr })
 
             -- Smart open: delegate to 'o' mapping (expand or open)
             map('l', function()
