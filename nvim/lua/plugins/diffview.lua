@@ -40,9 +40,13 @@ return {
           },
         },
         keymaps = {
+          view = {
+            ["q"] = "<cmd>DiffviewClose<cr>",
+          },
           file_panel = {
             ["s"] = require("diffview.actions").stage_all,
             ["u"] = require("diffview.actions").unstage_all,
+            ["q"] = "<cmd>DiffviewClose<cr>",
           },
         },
       })
