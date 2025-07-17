@@ -93,6 +93,58 @@ When viewing a PR, these keybindings are active:
 | `<space>pd` | Show diff | Show PR diff |
 | `<space>pl` | List PRs | List all PRs |
 
+#### PR Merge Commands
+
+Octo provides comprehensive merge commands that respect your configuration defaults and allow fine-grained control:
+
+##### Basic Merge Commands
+
+**Note**: These commands work on the currently opened PR (via `:Octo pr edit <number>`)
+
+| Command | Description | Default Behavior |
+|---------|-------------|------------------|
+| `:Octo pr merge` | Merge current PR using default method | Uses `default_merge_method` config |
+| `:Octo pr merge commit` | Standard merge commit | Creates a merge commit |
+| `:Octo pr merge squash` | Squash and merge | Combines commits into one |
+| `:Octo pr merge rebase` | Rebase and merge | Rebases commits onto base branch |
+
+##### Branch Deletion Options
+
+You can control branch deletion by adding arguments:
+
+| Command Example | Description |
+|-----------------|-------------|
+| `:Octo pr merge delete` | Force delete branch after merge |
+| `:Octo pr merge nodelete` | Keep branch after merge |
+| `:Octo pr merge squash delete` | Squash merge and delete branch |
+| `:Octo pr merge rebase nodelete` | Rebase merge and keep branch |
+
+Without specifying `delete` or `nodelete`, the command uses your `default_delete_branch` configuration.
+
+##### Admin Merge Commands (Custom)
+
+For repositories with branch protection, use admin privileges. Unlike the basic commands, these require a PR number since they use the GitHub CLI directly:
+
+| Command | Description |
+|---------|-------------|
+| `:Octo pr merge_admin <PR>` | Admin merge with defaults |
+| `:Octo pr merge_admin <PR> squash` | Admin squash merge |
+| `:Octo pr merge_admin <PR> rebase` | Admin rebase merge |
+| `:Octo pr merge_admin <PR> commit` | Admin standard merge |
+| `:Octo pr merge_admin <PR> squash delete` | Admin squash merge and delete |
+| `:Octo pr merge_admin <PR> nodelete` | Admin merge and keep branch |
+
+Examples:
+- `:Octo pr merge_admin 42` - Merge PR #42 with admin privileges using defaults
+- `:Octo pr merge_admin 42 squash delete` - Squash merge PR #42 and delete branch
+- `:Octo pr merge_admin` - Will prompt for PR number if not provided
+
+##### Configuration Defaults
+
+The merge behavior is controlled by these settings in your Octo config:
+- `default_merge_method`: "commit" | "squash" | "rebase" (default: "commit")
+- `default_delete_branch`: true | false (default: false)
+
 #### Review Management
 | Key | Action | Description |
 |-----|--------|-------------|
