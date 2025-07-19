@@ -46,7 +46,7 @@ return {
           path_display = { "smart" },
 
           -- If fd is present use it instead of the built-in file finder
-          find_command = (not lacks_fd) and { "fd", "--type", "f", "--strip-cwd-prefix" } or nil,
+          find_command = (not lacks_fd) and { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" } or nil,
         },
 
         pickers = {
